@@ -4,8 +4,12 @@ import SideDrawer from "../components/miscellaneous/SideDrawer";
 import MyChats from "../components/MyChats";
 import ChatBox from "../components/ChatBox";
 import { useState } from "react";
+import { useRouteMatch } from "react-router-dom";
 
 const ChatPage = () => {
+  const router = useRouteMatch();
+
+  console.log({ router });
   const { user } = ChatState();
   const [fetchAgain, setFetchAgain] = useState(false); //it is used to keep track of changes made in single chat component like leave group ,update the name of group
 
