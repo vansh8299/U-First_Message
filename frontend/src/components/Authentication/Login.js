@@ -5,7 +5,8 @@ import { VStack } from "@chakra-ui/layout";
 import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { ChatState } from "../../Context/ChatProvider";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -17,6 +18,7 @@ const Login = () => {
 
   // const location = useLocation();
   const history = useHistory();
+  const { setUser } = ChatState();
 
   const submitHandler = async () => {
     setLoading(true);
@@ -52,7 +54,7 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
-
+      setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       history.push("/chats");
