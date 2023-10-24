@@ -8,6 +8,7 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middlewares/errrorMiddleware");
 
+const path = require("path");
 dotenv.config();
 connectDB();
 const app = express(); //creating of this express variable
@@ -24,6 +25,10 @@ app.use("/api/message", messageRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
 const PORT = process.env.PORT || 5000;
 const server = app.listen(
   PORT,

@@ -26,7 +26,7 @@ import React, { useState } from "react";
 import { Flex } from "@chakra-ui/react";
 import { ChatState } from "../../Context/ChatProvider";
 import ProfileModal from "./ProfileModal";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import ChatLoading from "../ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
